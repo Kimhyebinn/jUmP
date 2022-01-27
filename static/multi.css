@@ -1,0 +1,224 @@
+.main_title {
+    margin-left: 0px;
+    margin-right: 0px;
+    position: absolute;
+    left: 0px;
+    height: 100px;
+    width: 1920px;
+    margin-bottom: 10px;
+}
+
+.title_button {
+    font-size: 3em;
+    text-align: center;
+    border: 1px white;
+    background-color: white;
+    color: #73A2FF;
+}
+
+.main_button_line {
+    margin-left: 0px;
+    margin-right: 0px;
+    position: absolute;
+    top: 110px;
+    left: 150px;
+    height: 100px;
+    width: 1620px;
+    border-bottom : 2px solid #73A2FF;  
+    margin-bottom: 10px;
+}
+
+.main_buttons {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 250px;
+    height: 80px;
+    background-color: white;
+    font-size: 2em;
+    border: 1px white;
+}
+.main_buttons:hover {
+    background-color: #afcaff;
+}
+
+.interview {
+    margin-left: 0px;
+    margin-right: 0px;
+    position: absolute;
+    top: 220px;
+    left: 150px;
+    width: 1620px;
+    height: 300px;
+    background-color: #73A2FF;
+}
+
+.interview_text {
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    width: 300px;
+    height: 50px;
+    font: 2em bold black;;
+}
+
+.box_out {
+    margin-left: 0px;
+    margin-right: 0px;
+    position: absolute;
+    top: 220px;
+    left: 150px;
+    width: 1620px;
+    height: 755px;
+    background-color: #73A2FF;
+}
+
+.box_in {
+    background-color: white;
+    border: 1px solid white;
+    position: absolute;
+    left: 150px;
+    top: 100px;
+    width: 1320px;
+    height: 550px;
+}
+
+.video_box {
+    position: absolute;
+    left: 800px;
+    top: 50px;
+    height: 450px;
+    width: 350px;
+    border: 3px solid #73A2FF;
+    border-radius: 10px;
+}
+
+.linee {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    background-color: #73A2FF;
+}
+
+.videoo {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    height: 370px;
+    width: 100%;
+    background-image: url("NOYES.jpg");
+    background-size: 350px 370px;
+}
+
+.mypage {
+    border-top: 2px solid #73A2FF;
+    position: absolute;
+    left: 150px;
+    top: 220px;
+    width: 1620px;
+    height: 750px;
+}
+
+.mypage_buttonline {
+    border-right: 2px solid #73A2FF;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 300px;
+    height: 750px;
+}
+
+.mypage_button {
+    background-color: white;
+    border: 2px solid white;
+    width: 300px;
+    height: 50px;
+    font-size: 1.5em;
+}
+
+.authentication_box {
+    position: absolute;
+    border-radius: 10px;
+    border: 2px solid #73A2FF;
+    top: 100px;
+    left: 710px;
+    width: 500px;
+    height: 300px;
+}
+
+.authentication {
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
+.mypage_box {
+    position: absolute;
+    left: 330px;
+    top: 30px;
+    width: 1120px;
+    height: 720px;
+    font: 1.5em black bolder;
+}
+
+.underline {
+    text-decoration-line: none;
+    color: black;
+}
+
+.mypage_button_click {
+    background-color: white;
+    border: 2px solid white;
+    width: 300px;
+    height: 50px;
+    font-size: 1.5em;
+    background-color: #73A2FF;
+}
+
+.area {
+    position: absolute;
+    left: 150px;
+    top: 220px;
+    width: 1620px;
+    height: 750px;
+}
+
+.area1 {
+    position: absolute;
+    left: 100px;
+    top: 700px;
+    width: 30px;
+    height: 40px;
+    background-image: url("NOYES.jpg");
+    background-size: 30px 40px;
+}
+
+.area2 {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 30px;
+    height: 40px;
+    background-image: url("NOYES.jpg");
+    background-size: 30px 40px;
+}
+
+.area3 {
+    position: absolute;
+    left: 30px;
+    top: 120px;
+    width: 30px;
+    height: 40px;
+    background-image: url("NOYES.jpg");
+    background-size: 30px 40px;
+}
+
+.area4 {
+    position: absolute;
+    left: 1000px;
+    top: 220px;
+    width: 30px;
+    height: 40px;
+    background-image: url("NOYES.jpg");
+    background-size: 30px 40px;
+}
