@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'multi.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -67,12 +67,11 @@
                         시간 재생버튼 등등
                     </div>
                     <div class="videoo">
-                        여기 비디오 화면 들어갈거임
+                        <video muted id="video" autoplay style="width: 400px;"></video>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-        </script>
+        <script src="{% static 'record.js' %}"></script>
     </body>
 </html>

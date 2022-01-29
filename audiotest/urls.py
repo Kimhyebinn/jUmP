@@ -5,7 +5,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('CVtest', views.detectme, name='detectme'),
     path('interview', views.interview, name='interview'),
     path('interview/setting', views.interview_setting, name='setting'),
     path('interview/main', views.interview_main, name='main'),

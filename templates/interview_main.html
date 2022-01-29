@@ -1,8 +1,10 @@
 {% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'multi.css' %}">
+        <meta name="viewport" content="width=device width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -28,16 +30,16 @@
                 </div>
                 <div class="video_box">
                     <div class="linee">
-                        시간 재생버튼 등등
+                        <button id="start"> Start Recording </button>
+                        <button id="stop"> Stop Recording </button>
                     </div>
                     <div class="videoo">
-                        <img src="http://localhost:8000/CVtest" style="width: 350px; height: 370px;">
+                        <video muted id="video" autoplay style="width:400px;"></video>
                     </div>
                 </div>
                 <button type="button" class="main_buttons" onclick="location.href='interview_main.html'"> next </button>
             </div>
         </div>
-        <script type="text/javascript">
-        </script>
+        <script src="{% static 'record.js' %}"></script>
     </body>
 </html>
