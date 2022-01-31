@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('audiotest.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # static 파일을 지정할 수 있는 경로 지정. 즉, localhost:8000/media 이하의 파일을 취급하겠다는 것임

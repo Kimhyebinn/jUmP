@@ -29,13 +29,18 @@
                     <a href="" class="underline"> 다음 </a>
                 </div>
                 <div class="video_box">
-                    <div class="linee">
-                        <button id="start"> Start Recording </button>
-                        <button id="stop"> Stop Recording </button>
-                    </div>
-                    <div class="videoo">
-                        <video muted id="video" autoplay style="width:400px;"></video>
-                    </div>
+                    <form method="post" action="" id="video_form">
+                        {% csrf_token %}
+                        <div class="linee">
+                            <button  id="start"> Start Recording </button>
+                            <button type="submit"> Stop Recording </button>
+                        </div>
+                        <div class="videoo">
+                            <label name="video">
+                                <image src="http://127.0.0.1:8000/video" style="width:440px;" id="video"></image>
+                            </label>
+                        </div>
+                    </form>
                 </div>
                 <button type="button" class="main_buttons" onclick="location.href='interview_main.html'"> next </button>
             </div>

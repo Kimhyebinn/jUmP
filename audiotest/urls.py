@@ -4,6 +4,7 @@ from . import views
 from django.conf.urls import include
 
 urlpatterns = [
+        path('video', views.detectme, name='video'),
     path('', views.index, name='index'),
     path('interview', views.interview, name='interview'),
     path('interview/setting', views.interview_setting, name='setting'),
