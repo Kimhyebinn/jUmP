@@ -1,3 +1,12 @@
+th,td{
+    padding: 30px;
+
+}
+table{
+    border-spacing: 50px;
+}
+
+
 .main_title {
     margin-left: 0px;
     margin-right: 0px;
@@ -37,6 +46,22 @@
     font-size: 2em;
     border: 1px white;
 }
+
+.setting_button{
+    display: block;
+    margin-bottom: 20px;
+    /* position: absolute;
+    left: 0px;
+    right: 0px; */
+    width: 200px;
+    height: 70px;
+    background-color: #5D6DBE;
+    font-size: 1em;
+    border: 1px #5D6DBE;
+
+}
+
+
 .main_buttons:hover {
     background-color: #afcaff;
 }
@@ -48,8 +73,26 @@
     top: 220px;
     left: 150px;
     width: 1620px;
-    height: 300px;
-    background-color: #73A2FF;
+    height: 450px;
+    background-color: #9db9f1;
+}
+
+.interviewer{
+    margin-left: 150px;
+}
+
+.interview_question{
+    margin-left: 150px;
+}
+
+.interview_screen{
+    margin-right: 150px;
+    margin-top: 180px;
+}
+
+.jUmP{
+    display: block;
+    margin-right: 150px;
 }
 
 .interview_text {
@@ -82,12 +125,22 @@
     height: 550px;
 }
 
+.form{
+    text-align: left;
+    padding-top: 100px;
+    padding-left: 100px;
+}
+
+.np_buttons{
+    color:#73A2FF;
+}
+
 .video_box {
     position: absolute;
     left: 800px;
     top: 50px;
-    height: 410px;
-    width: 440px;
+    height: 450px;
+    width: 350px;
     border: 3px solid #73A2FF;
     border-radius: 10px;
 }
@@ -105,8 +158,10 @@
     position: absolute;
     left: 0px;
     top: 80px;
-    height: 330px;
+    height: 370px;
     width: 100%;
+    background-image: url("NOYES.jpg");
+    background-size: 350px 370px;
 }
 
 .mypage {
@@ -187,7 +242,7 @@
     top: 700px;
     width: 30px;
     height: 40px;
-    background-image: url("NOYES.jpg");
+    background-image: url();
     background-size: 30px 40px;
 }
 
@@ -197,7 +252,7 @@
     top: 0px;
     width: 30px;
     height: 40px;
-    background-image: url("NOYES.jpg");
+    background-image: url();
     background-size: 30px 40px;
 }
 
@@ -207,7 +262,7 @@
     top: 120px;
     width: 30px;
     height: 40px;
-    background-image: url("NOYES.jpg");
+    background-image: url();
     background-size: 30px 40px;
 }
 
@@ -217,7 +272,7 @@
     top: 220px;
     width: 30px;
     height: 40px;
-    background-image: url("NOYES.jpg");
+    background-image: url();
     background-size: 30px 40px;
 }
-;
+

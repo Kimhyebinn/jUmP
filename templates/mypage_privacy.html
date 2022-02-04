@@ -1,9 +1,8 @@
 {% load static %}
-
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'multi.css' %}">
+        <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -14,25 +13,32 @@
         </div>
         <div class="main_button_line" align="center">
             <form>
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'mypage' %}'"> 마이페이지 </button>
+                <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
             </form>
         </div>
         <div class="mypage">
             <div class="mypage_buttonline">
                 <form>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'mypage' %}'"> </button>
-                    <button type="button" class="mypage_button_click" onclick="location.href='{% url 'privacy' %}'"> 개인정보 확인 </button>
+                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> </button>
+                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> 개인정보 확인 </button>
                     <button type="button" class="mypage_button" onclick="location.href='{% url 'history' %}'"> 면접 히스토리 </button>
                 </form>
             </div>
             <div class="mypage_box">
+                <h1>개인정보 변경</h1>
                 ID: ID
-                <br> PW: <input type="password">
+                <br> 이름: <input type="text">
+                <button type = "button" class = "modify_button">수정</button>
+                <br> 휴대폰 번호: <input type="text">
+                <button type = "button" class = "modify_button">수정</button>
+
+                <h1>비밀번호 변경</h1>
+                PW: <input type="password">
                 <br> PW Check: <input type="password">
-                <br> e-mail <input type="text">
+                <button type = "button" class = "modify_button">변경</button>
             </div>
         </div>
         <script type="text/javascript">

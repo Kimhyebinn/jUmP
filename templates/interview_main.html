@@ -1,10 +1,8 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="{% static 'multi.css' %}">
+        <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -18,33 +16,23 @@
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'mypage' %}'"> 마이페이지 </button>
+                <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
             </form>
         </div>
         <div class="box_out">
-            <div class="box_in">
-                <div class="question">
-                    <span> 질문 </span>
-                    <span> 힌트. 힌트는 드롭다운 형식으로 할까 생각중임. </span>
-                    <a href="" class="underline"> 다음 </a>
+            <div class="box_in" align="center">
+                <div class="interview_screen" align="right">
+                    <div class = "time"> time 자리</div>
+                    <button type="button"><img src="/static/img/play.png" height ="10" width="10" /></button>
+                    <button type="button"><img src="/static/img/stop-button.png" height ="10" width="10" /></button>
                 </div>
-                <div class="video_box">
-                    <form method="post" action="" id="video_form">
-                        {% csrf_token %}
-                        <div class="linee">
-                            <button  id="start"> Start Recording </button>
-                            <button type="submit"> Stop Recording </button>
-                        </div>
-                        <div class="videoo">
-                            <label name="video">
-                                <image src="http://127.0.0.1:8000/video" style="width:440px;" id="video"></image>
-                            </label>
-                        </div>
-                    </form>
+                <div class = "interview_question" align="left">question 자리</div>
+                <div class = "interviewer" align="left">
+                    <img src = "/static/img/면접관.png" width = "100" height = "">
                 </div>
-                <button type="button" class="main_buttons" onclick="location.href='interview_main.html'"> next </button>
             </div>
         </div>
-        <script src="{% static 'record.js' %}"></script>
+        <script type="text/javascript">
+        </script>
     </body>
 </html>

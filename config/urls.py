@@ -21,4 +21,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('audiotest.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # static 파일을 지정할 수 있는 경로 지정. 즉, localhost:8000/media 이하의 파일을 취급하겠다는 것임
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

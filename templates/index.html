@@ -1,9 +1,8 @@
 {% load static %}
-
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'multi.css' %}">
+        <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -17,15 +16,39 @@
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'mypage' %}'"> 마이페이지 </button>
+                <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
             </form>
         </div>
         <div class="area">
-            <div class="area1"></div>
-            <div class="area2"></div>
-            <div class="area3"></div>
-            <div class="area4"></div>
+            <center>
+                <table border="0" style="margin-left: 30px;">
+                <thead>
+                    <tr>
+                        <th bgcolor= "#B8E9FF">셀프 모니터링</th>
+                        <th bgcolor= "#73A2FF">난이도별 질문 선정</th>
+                        <th bgcolor= "#9FA9D8">IT 특화 질문</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src = "static/img/monitor.png" width = "300" height = ""></td>
+                        <td><img src = "static/img/stairs.png" width = "300" height = ""></td>
+                        <td><img src = "static/img/네카라쿠배.jpg" width = "300" height = ""></td>
+                    </tr>
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>언제까지 핸드폰으로 모니터링 할래?</td>
+                        <td>Step by Step! 단계별로 올라가기!</td>
+                        <td>우리랑 가자 네카라쿠배</td>
+                    </tr>
+                </tfoot>
+                </table>
+            </center>
+
         </div>
+
         <script type="text/javascript">
         </script>
     </body>

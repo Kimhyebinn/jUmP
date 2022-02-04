@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="{% static 'multi.css' %}">
+        <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -17,14 +17,14 @@
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'mypage' %}'"> 마이페이지 </button>
+                <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
             </form>
         </div>
         <div class="mypage">
             <div class="mypage_buttonline">
                 <form>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'mypage' %}'"> </button>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'mypage' %}'"> 개인정보 확인 </button>
+                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> </button>
+                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> 개인정보 확인 </button>
                     <button type="button" class="mypage_button" onclick="location.href='{% url 'history' %}'"> 면접 히스토리 </button>
                 </form>
             </div>
