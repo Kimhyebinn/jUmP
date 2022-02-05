@@ -1,11 +1,23 @@
 from django.shortcuts import render
 from django.views.decorators import gzip
 from django.http import StreamingHttpResponse
-import cv2
 import threading
+from .models import QuestionChar
 from django.utils import timezone
 
 # Create your views here.
+"""
+난수 추출 문제 나오는 함수
+"""
+def get_post(request):
+    insung_num = request.POST.get('insung_num', False)
+    skill_num = request.POST.get('skill_num', False)
+    level = request.POST.get('level', False)
+    question_list = QuestionChar.objects.order_by('?').filter(question_num__lt=skill_num).filter(question_num__lt=insung_num).filter(question_dif=level)
+    context = {'question_list': question_list}
+    print(request.POST)
+    return render(request, 'interview_main.html', context)
+
 """
 모의면접 화면 출력
 """

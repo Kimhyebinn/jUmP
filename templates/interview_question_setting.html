@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
+        <script>
+        function send(){
+        alert("send");
+        document.getElementById("contents").submit();
+        }
+    </script>
     </head>
     <body>
         <div class="main_title" align="center">
@@ -22,16 +28,10 @@
         <div class="box_out">
             <div class="box_in" align="center">
                 <div class = "form">
-                    <form>
+                    <form insung_num = 'insung_num' skill_num="skill_num" level = "level" action="{% url 'main' %}" method = "post">
+                        {% csrf_token %}
                         <h2>면접 세팅 설문지</h2>
-                        1. 귀하는 어떤 면접을 연습 하시겠습니까?
-                        <input type="radio" name="type" value="인성"> 인성면접
-                        <input type="radio" name="type" value="기술"> 기술면접
-                        <input type="radio" name="type" value="둘다"> 둘 다
-                    </form>
-                    <br>
-                    <form>
-                        2. 문항의 수를 정해주세요. 단, 전체 문항 수는 인성면접, 기술면접을 합쳐서 최대 10문항까지 가능합니다.
+                        1. 문항의 수를 정해주세요. 단, 전체 문항 수는 인성면접, 기술면접을 합쳐서 최대 10문항까지 가능합니다.
                         <br> 인성면접
                         <input type="radio" name="insung_num" value="0"> 0
                         <input type="radio" name="insung_num" value="1"> 1
@@ -56,20 +56,18 @@
                         <input type="radio" name="skill_num" value="8"> 8
                         <input type="radio" name="skill_num" value="9"> 9
                         <input type="radio" name="skill_num" value="10"> 10
-                    </form>
                     <br>
-                    <form>
-                        3. 기술 면접의 난이도를 설정해주세요.
-                        <input type="radio" name="level" value="상"> 상
-                        <input type="radio" name="level" value="중"> 중
-                        <input type="radio" name="level" value="하"> 하
+                        2. 기술 면접의 난이도를 설정해주세요.
+                        <input type="radio" name="level" value="0"> 하
+                        <input type="radio" name="level" value="1"> 중
+                        <input type="radio" name="level" value="2"> 상
+                        <br></br>
+                    <button type="submit" onclick="send();" align="center"> 전송 </button>
                     </form>
 
                 </div>
-                <button type="button" class="np_buttons" onclick="location.href='{% url 'main' %}'"> next </button>
             </div>
         </div>
-        <script type="text/javascript">
-        </script>
+
     </body>
 </html>
