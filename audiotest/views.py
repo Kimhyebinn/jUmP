@@ -13,8 +13,15 @@ def get_post(request):
     insung_num = request.POST.get('insung_num', False)
     skill_num = request.POST.get('skill_num', False)
     level = request.POST.get('level', False)
-    question_list = QuestionChar.objects.order_by('?').filter(question_num__lt=skill_num).filter(question_num__lt=insung_num).filter(question_dif=level)
-    context = {'question_list': question_list}
+    insung_num = int(insung_num)
+    skill_num = int(skill_num)
+    print(insung_num)
+    print(skill_num)
+    question_list = QuestionChar.objects.filter( question_cla=0, question_dif=0).order_by('?')[0:insung_num]
+    question_list1 = QuestionChar.objects.filter(question_cla=1, question_dif=level).order_by('?')[0:skill_num]
+    context = {'question_list': question_list,
+               'question_list1': question_list1}
+    print(context)
     print(request.POST)
     return render(request, 'interview_main.html', context)
 
