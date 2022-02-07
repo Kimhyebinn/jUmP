@@ -14,6 +14,7 @@ urlpatterns = [
     path('mypage/privacy', views.mypage_privacy, name='privacy'),
     path('mypage/history', views.mypage_history, name='history'),
     path('interview/main', views.get_post, name='main'),
+    path('base', views.base, name='base'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

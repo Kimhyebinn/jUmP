@@ -1,12 +1,43 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h2> 해시 암호화 알고리즘의 원리에 대해 설명해보세요. </h2>
-<img src="http://localhost:8000/CVtest" style="background-size: 350px 370px;">
-</body>
+<html>
+    <head>
+        <!--meta tags-->
+        <meta charset="utf-8">
+        <meta name="viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--Bootstrap CSS-->
+        <link rel="stylesheet" href="{% static 'multi.css' %}">
+        <!--Pybo CSS-->
+        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+        <title> Multicampus Group Project </title>
+    </head>
+    <body>
+    {% include "navbar.html" %}
+    {% block content %}
+    {% endblock %}
+    <!-- jQuery JS -->
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+
+<!--        <div class="main_title" align="center">-->
+<!--            <form>-->
+<!--                <button type="button" class="title_button" onclick="location.href='{% url 'index' %}'"> jUmP </button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div class="main_button_line" align="center">-->
+<!--            <form>-->
+<!--                <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                <button type="button" class="main_buttons" onclick="location.href='{% url 'base' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div class="docu">-->
+<!--            <center>-->
+<!--                <p>면접 자료</p>-->
+<!--            </center>-->
+<!--        </div>-->
+<!--        <script type="text/javascript">-->
+<!--        </script>-->
+    </body>
 </html>
