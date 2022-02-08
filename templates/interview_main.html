@@ -1,7 +1,9 @@
 {% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
     </head>
@@ -22,9 +24,17 @@
         <div class="box_out">
             <div class="box_in" align="center">
                 <div class="interview_screen" align="right">
-                    <div class = "time"> time 자리</div>
-                    <button type="button"><img src="/static/img/play.png" height ="10" width="10" /></button>
-                    <button type="button"><img src="/static/img/stop-button.png" height ="10" width="10" /></button>
+                    <div class = "time" id="time"></div>
+                    <div>
+                        <button id="start"> Start </button>
+                        <button id="stop"><img src="/static/img/stop-button.png" height ="10" width="10" /></button>
+                        <button id="play"><img src="/static/img/play.png" height ="10" width="10" /></button>
+                        <button id="download"> Download </button>
+                    </div>
+                    <div>
+                        <video playsinline muted id="record_video" autoplay></video>
+                        <video playsinline id="replay_video"></video>
+                    </div>
                 </div>
                 <div class = "interview_question" align="left">
                     {% if question_list %}
@@ -49,7 +59,60 @@
 
                 </div>
             </div>
-        <script type="text/javascript">
-        </script>
+            <script type="text/javascript">
+                window.onload = function () {
+                    document.getElementById("time").innerText = 90;
+                    const parts = [];
+                    let mediaRecorder;
+                    let url;
+                    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+                        document.getElementById("record_video").srcObject = stream;
+                        document.getElementById("start").onclick = function () {
+                            mediaRecorder = new MediaRecorder(stream);
+                            let timee = new Date();
+                            let end_time = timee.setSeconds(timee.getSeconds() + 90);
+                            mediaRecorder.start(0);
+                            mediaRecorder.ondataavailable = function (e) {
+                                parts.push(e.data);
+                                let elapsed_time = new Date();
+                                elapsed_time = elapsed_time.setSeconds(elapsed_time.getSeconds());
+                                document.getElementById("time").innerText = (end_time - elapsed_time) / 1000;
+                                if ((end_time - elapsed_time) / 1000 < 0) {
+                                    mediaRecorder.stop(0);
+                                    const blob = new Blob(parts, {
+                                        type: "video/webm"
+                                    });
+                                    url = URL.createObjectURL(blob);
+                                }
+                            }
+                        }
+                    });
+            
+                    document.getElementById("stop").onclick = function () {
+                        document.getElementById("time").innerText = 90;
+                        mediaRecorder.stop(0);
+                        const blob = new Blob(parts, {
+                            type: "video/webm"
+                        });
+                        url = URL.createObjectURL(blob);
+                    }
+            
+                    document.getElementById("play").onclick = function () {
+                        document.getElementById("replay_video").srcObject = null;
+                        document.getElementById("replay_video").src = url;
+                        document.getElementById("replay_video").controls = true;
+                        document.getElementById("replay_video").play();
+                    }
+            
+                    document.getElementById("download").onclick = function () {
+                        document.getElementById("time").innerText = 90;
+                        const video = document.createElement("a");
+                        document.body.appendChild(a);
+                        video.href = url;
+                        video.download = "interview_video.mp4";
+                        video.click();
+                    }
+                }
+            </script>
     </body>
 </html>
