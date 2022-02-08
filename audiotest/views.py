@@ -89,4 +89,7 @@ def mypage_history(request):
 
 def base(request):
     return render(request, 'base.html')
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5655132cece472430376c643fc7e6b203e0f72e

@@ -19,16 +19,23 @@ from django.conf.urls.static import static
 from django.conf import settings
 from docu import views
 from audiotest import views
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5655132cece472430376c643fc7e6b203e0f72e
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('audiotest.urls')),
     path('docu/', include('docu.urls')),
     path('', views.mypage, name='mypage'),
+<<<<<<< HEAD
     path('common/', include('common.urls')),
     path('', views.index, name='index'),
+=======
+>>>>>>> b5655132cece472430376c643fc7e6b203e0f72e
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
