@@ -16,13 +16,6 @@ urlpatterns = [
     path('mypage/history', views.mypage_history, name='history'),
     path('interview/main', views.get_post, name='main'),
     path('base', views.base, name='base'),
-<<<<<<< HEAD
-
-=======
-    path('login', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    path('logout', auth_views.LogoutView.as_view(), name='logout'),
-    path('signup', views.signup, name='signup'),
->>>>>>> b5655132cece472430376c643fc7e6b203e0f72e
 ]
 
 if settings.DEBUG:
