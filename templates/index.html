@@ -17,6 +17,13 @@
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'base' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
+                <li class="nav-item">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'logout' %}">{{ user.username }} (로그아웃)</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'login' %}">로그인</a>
+                    {% endif %}
+               </li>
             </form>
         </div>
         <div class="area">
