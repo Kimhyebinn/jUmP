@@ -17,22 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-<<<<<<< HEAD
 from docu import views
-=======
 from audiotest import views
->>>>>>> 4ddd7f84fcad739465ca76ea8c8b2fd603738920
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('audiotest.urls')),
-<<<<<<< HEAD
     path('docu/', include('docu.urls')),
-=======
     path('', views.mypage, name='mypage'),
-
-
->>>>>>> 4ddd7f84fcad739465ca76ea8c8b2fd603738920
+    path('common/', include('common.urls')),
+    path('', views.index, name='index'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

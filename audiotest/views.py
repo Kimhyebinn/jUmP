@@ -24,23 +24,6 @@ def get_post(request):
                'question_list1': question_list1}
     return render(request, 'interview_main.html', context)
 
-def signup(request):
-    """
-    계정생성
-    """
-    if request.method == "POST":
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)  # 사용자 인증
-            login(request, user)  # 로그인
-            return redirect('index')
-    else:
-        form = UserForm()
-    return render(request, 'signup.html', {'form': form})
-
 """
 비밀번호 출력
 """
@@ -103,9 +86,7 @@ def mypage_privacy(request):
 
 def mypage_history(request):
     return render(request, 'mypage_history.html')
-<<<<<<< HEAD
 
 def base(request):
     return render(request, 'base.html')
-=======
->>>>>>> 4ddd7f84fcad739465ca76ea8c8b2fd603738920
+
