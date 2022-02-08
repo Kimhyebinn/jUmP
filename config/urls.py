@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from docu import views
 from audiotest import views
+from docu.views import base_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +27,7 @@ urlpatterns = [
     path('docu/', include('docu.urls')),
     path('', views.mypage, name='mypage'),
     path('common/', include('common.urls')),
-    path('', views.index, name='index'),
+    path('', base_views.index, name='index'),
 ]
 
 if settings.DEBUG:
