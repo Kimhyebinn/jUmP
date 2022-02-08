@@ -103,9 +103,6 @@ def mypage_privacy(request):
 
 def mypage_history(request):
     return render(request, 'mypage_history.html')
-<<<<<<< HEAD
 
 def base(request):
     return render(request, 'base.html')
-=======
->>>>>>> 4ddd7f84fcad739465ca76ea8c8b2fd603738920
