@@ -16,7 +16,8 @@ urlpatterns = [
     path('interview/main', views.get_post, name='main'),
     path('base', views.base, name='base'),
     path('change_password/', views.change_password, name="re_password"),
-    path('login/', auth_views.LoginView.as_view(template_name='common/login.html'), name='login')
+    path('login/', auth_views.LoginView.as_view(template_name='common/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
 
 if settings.DEBUG:
