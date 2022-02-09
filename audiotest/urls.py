@@ -14,6 +14,7 @@ urlpatterns = [
     path('mypage/history', views.mypage_history, name='history'),
     path('interview/main', views.get_post, name='main'),
     path('base', views.base, name='base'),
+    path('change_password/', views.change_password, name="re_password"),
 ]
 
 if settings.DEBUG:
