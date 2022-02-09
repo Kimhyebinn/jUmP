@@ -15,7 +15,7 @@ def question_create(request):
         form = QuestionForm(request.POST)
         if form.is_valid():
             question = form.save(commit=False)
-            answer.author = request.user
+            question.author = request.user
             question.create_date = timezone.now()
             question.save()
             return redirect('docu:index')
