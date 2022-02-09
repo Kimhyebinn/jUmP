@@ -26,9 +26,6 @@ def get_post(request):
     return render(request, 'interview_main.html', context)
 
 """
-계정생성
-"""
-"""
 비밀번호 변경
 """
 def change_password(request):
