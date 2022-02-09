@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="{% static 'multi.css' %}">
         <title> Multicampus Group Project </title>
+    <script>
+        function send(){
+        alert("제출되었습니다.");
+        document.getElementById("contents").submit();
+        }
+    </script>
     </head>
     <body>
         <div class="main_title" align="center">
@@ -37,7 +43,29 @@
                 <button type = "button" class = "modify_button">수정</button>
 
                 <h1>비밀번호 변경</h1>
+<div class="container">
+  <form method="POST" action="{% url 're_password' %}">
+    {% csrf_token %}
+    현재 비밀번호 :
+    <input name="origin_password" type="password">
+    <br><br>
+    변경할 비밀번호 :
+    <input name="new_password" type="password">
+    <br><br>
+    비밀번호 확인 :
+    <input name="confirm_password" type="password">
+    <br><br>
+      <input class="btn btn-primary" onclick="send()" type="submit" value="변경">
+      {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
+  </form>
+</div>
             </div>
         </div>
         <script type="text/javascript">
