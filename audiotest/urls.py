@@ -7,6 +7,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('index1', views.index1, name='index1'),
     path('interview', views.interview, name='interview'),
     path('interview/setting', views.interview_question_setting, name='setting'),
     path('mypage', views.mypage, name='mypage'),
