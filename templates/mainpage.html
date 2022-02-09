@@ -1,8 +1,9 @@
 {% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'multi.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title> Multicampus Group Project </title>
     </head>
     <body>
@@ -17,21 +18,12 @@
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'docu:index' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
+                <button type="button" class="main_buttons" onclick="location.href='{% url 'login' %}'"> 로그인 </button>
             </form>
         </div>
-        <div class="mypage">
-            <div class="mypage_buttonline">
-                <form>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> </button>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> 개인정보 확인 </button>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'history' %}'"> 면접 히스토리 </button>
-                </form>
-            </div>
-            <div class="mypage_box">
-                여기에 면접 별 동영상 나올 것
-            </div>
-        </div>
-        <script type="text/javascript">
-        </script>
-    </body>
+        <!-- 이하 각 화면 내용 출력 -->
+    {% block content%}
+    {% endblock %}
+    <!-- 이상 각 화면 내용 -->
+     </body>
 </html>

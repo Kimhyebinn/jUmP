@@ -80,9 +80,6 @@ def mypage_privacy(request):
     else:
      return redirect('index1')
 
-def mypage_history(request):
-    return render(request, 'mypage_history.html')
-
 def base(request):
 
     return render(request, 'base.html')
