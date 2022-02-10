@@ -21,23 +21,10 @@
         <header style="background-color: white;">
             <h1>우리는 올라갈 일만 남았다.</h1>
             <p>#jUmP_UP</p>
+            <br>
+            <button type="button" class="setting_button" onclick="location.href='{% url 'audiotest:setting' %}'">면접 세팅</button>
         </header>
     </section>
-<div class="interview">
-    <div class = "jUmP">
-        <img class = "image" src= "/static/img/JUMP.png" alt = "jump 아이콘" width = "auto" height = "400" align = "right"></img>
-    </div>
-    <div class="interview_text">
-        <button type="button" class="setting_button" onclick="location.href='{% url 'audiotest:setting' %}'">면접 세팅</button>
-    </div>
-    <div class = "text-box">
-        <div class = "text-wrap">
-            <div class = "slogan">
-                <h1>우리는 올라갈 일만 남았다</h1>
-                <h2>#jUmP_UP</h2>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
 
 {% endblock %}

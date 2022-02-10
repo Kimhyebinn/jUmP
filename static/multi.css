@@ -14,8 +14,6 @@
 
         top: 0;
         left: 0;
-        padding: 8em 0;
-        margin: 4em 0 0 0;
 	}
 	#banner_interview header {
 			background-color: rgba(34, 30, 31, 0.98);
@@ -38,3 +36,15 @@
 				margin: 0;
 				font-size: 1.5em;
 			}
+
+.interview-buttons {
+	color: black;
+	font: 1em bold inherit;
+	font-weight: 7000000;
+}
+
+.interview-box {
+	position: relative;
+	width: 33%;
+	height: 100px;
+}
