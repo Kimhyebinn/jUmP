@@ -31,7 +31,7 @@ def index(request):
         ).distinct()
 
     # 페이징 처리
-    paginator = Paginator(question_list, 7)
+    paginator = Paginator(question_list, 10)
     page_obj = paginator.get_page(page)
 
     context = {'question_list':page_obj, 'page': page, 'kw': kw, 'so': so} #page, kw, so 추가
