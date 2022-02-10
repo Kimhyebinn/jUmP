@@ -1,16 +1,17 @@
 #banner_interview {
 		text-align: center;
+
+        background: #white url("mainpage_image.png");
 		position: relative;
 		padding: 8em 0;
 		margin: 4em 0 0 0;
 	}
-#banner_interview::before {
-        background: url("mainpage_image.png");
+#banner_interview::after {
 	    background-position: center center;
 	    background-size: auto 100%;
         background-repeat: no-repeat;
         position: absolute;
-        opacity: 0.5;
+
         top: 0;
         left: 0;
         padding: 8em 0;

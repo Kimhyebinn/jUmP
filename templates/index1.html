@@ -9,9 +9,9 @@
             <li class="current" id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
             <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
             <li id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
-            <li id="btn_mypage"><a href="{% url 'audiotess:privacy' %}">Mypage</a></li>
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
             {% if user.is_authenticated %}
-            <li id="btn_logout"><a href="{% url 'audiotest:logout't %}">Logout</a></li>
+            <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
             {% else %}
             <li id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
             {% endif %}
@@ -25,32 +25,39 @@
     alert("먼저 로그인을 해주세요.");
 </script>
 {% endif %}
-<div class="area">
-    <center>
-        <table border="0" style="margin-left: 30px;">
-            <thead>
-            <tr>
-                <th bgcolor= "#B8E9FF">셀프 모니터링</th>
-                <th bgcolor= "#73A2FF">난이도별 질문 선정</th>
-                <th bgcolor= "#9FA9D8">IT 특화 질문</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><img src = "static/img/monitor.png" width = "300" height = ""></td>
-                <td><img src = "static/img/stairs.png" width = "300" height = ""></td>
-                <td><img src = "static/img/네카라쿠배.jpg" width = "300" height = ""></td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td>언제까지 핸드폰으로 모니터링 할래?</td>
-                <td>Step by Step! 단계별로 올라가기!</td>
-                <td>우리랑 가자 네카라쿠배</td>
-            </tr>
-            </tfoot>
-        </table>
-    </center>
-</div>
+    <section id="banner">
+    </section>
+    <section id="intro" class="container">
+        <div class="row">
+            <div class="col-4 col-12-medium">
+                <section class="first">
+                    <i class="icon solid"></i>
+                    <header>
+                        <h2>셀프 모니터링</h2>
+                    </header>
+                    <p>언제까지 핸드폰으로 모니터링 할래?</p>
+                </section>
+            </div>
+            <div class="col-4 col-12-medium">
+                <section class="middle">
+                    <i class="icon solid"></i>
+                    <header>
+                        <h2>난이도별 질문 선정</h2>
+                    </header>
+                    <p>Step by Step! 단계별로 올라가기!</p>
+                </section>
+            </div>
+            <div class="col-4 col-12-medium">
+                <section class="last">
+                    <i class="icon solid"></i>
+                    <header>
+                        <h2>IT계열 취준생을 위한 IT특화 질문</h2>
+                    </header>
+                    <p>같아가자 네카라쿠배!</p>
+                </section>
+            </div>
+        </div>
+    </section>
+</section>
 
 {% endblock %}
