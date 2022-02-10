@@ -1,97 +1,113 @@
 {% extends "mainpage.html" %}
 
 {% block content%}
-        <div class="box_out">
-            <div class="box_in" align="center">
-                <div class="interview_screen" align="right">
-                    <div class = "time" id="time"></div>
-                    <div>
-                        <button id="start"> Start </button>
-                        <button id="stop"><img src="/static/img/stop-button.png" height ="10" width="10" /></button>
-                        <button id="play"><img src="/static/img/play.png" height ="10" width="10" /></button>
-                        <button id="download"> Download </button>
-                    </div>
-                    <div>
-                        <video playsinline muted id="record_video" autoplay></video>
-                        <video playsinline id="replay_video"></video>
-                    </div>
-                </div>
-                <div class = "interview_question" align="left">
-                    {% if question_list %}
-                    <ul>
-                     {% for question in question_list %}
-                     {{ forloop.counter }}.
-                     {{ question.question_text }}
-                      <br></br>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    {% if question_list1 %}
-                    <ul>
-                     {% for question in question_list1 %}
-                     {{ forloop.counter }}.
-                     {{ question.question_text }}
-                        <br></br>
-                     {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
 
-                </div>
+<section id="header">
+    <h1><a href="{% url 'audiotest:index' %}">jUmP</a></h1>
+    <nav id="nav">
+        <ul>
+            <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
+            <li class="current" id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
+            <li id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
+            {% if user.is_authenticated %}
+            <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
+            {% else %}
+            <li id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+<div class="box_out">
+    <div class="box_in" align="center">
+        <div class="interview_screen" align="right">
+            <div class = "time" id="time"></div>
+            <div>
+                <button id="start"> Start </button>
+                <button id="stop"><img src="/static/img/stop-button.png" height ="10" width="10" /></button>
+                <button id="play"><img src="/static/img/play.png" height ="10" width="10" /></button>
+                <button id="download"> Download </button>
             </div>
-            <script type="text/javascript">
-                window.onload = function () {
-                    document.getElementById("time").innerText = 90;
-                    const parts = [];
-                    let mediaRecorder;
-                    let url;
-                    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
-                        document.getElementById("record_video").srcObject = stream;
-                        document.getElementById("start").onclick = function () {
-                            mediaRecorder = new MediaRecorder(stream);
-                            let timee = new Date();
-                            let end_time = timee.setSeconds(timee.getSeconds() + 90);
-                            mediaRecorder.start(0);
-                            mediaRecorder.ondataavailable = function (e) {
-                                parts.push(e.data);
-                                let elapsed_time = new Date();
-                                elapsed_time = elapsed_time.setSeconds(elapsed_time.getSeconds());
-                                document.getElementById("time").innerText = (end_time - elapsed_time) / 1000;
-                                if ((end_time - elapsed_time) / 1000 < 0) {
-                                    mediaRecorder.stop(0);
-                                    const blob = new Blob(parts, {
-                                        type: "video/webm"
-                                    });
-                                    url = URL.createObjectURL(blob);
-                                }
-                            }
-                        }
+            <div>
+                <video playsinline muted id="record_video" autoplay></video>
+                <video playsinline id="replay_video"></video>
+            </div>
+        </div>
+        <div class = "interview_question" align="left">
+            {% if question_list %}
+            <ul>
+                {% for question in question_list %}
+                {{ forloop.counter }}.
+                {{ question.question_text }}
+                <br></br>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% if question_list1 %}
+            <ul>
+                {% for question in question_list1 %}
+                {{ forloop.counter }}.
+                {{ question.question_text }}
+                <br></br>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("time").innerText = 90;
+        const parts = [];
+        let mediaRecorder;
+        let url;
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
+        document.getElementById("record_video").srcObject = stream;
+        document.getElementById("start").onclick = function () {
+            mediaRecorder = new MediaRecorder(stream);
+            let timee = new Date();
+            let end_time = timee.setSeconds(timee.getSeconds() + 90);
+            mediaRecorder.start(0);
+            mediaRecorder.ondataavailable = function (e) {
+                parts.push(e.data);
+                let elapsed_time = new Date();
+                elapsed_time = elapsed_time.setSeconds(elapsed_time.getSeconds());
+                document.getElementById("time").innerText = (end_time - elapsed_time) / 1000;
+                if ((end_time - elapsed_time) / 1000 < 0) {
+                    mediaRecorder.stop(0);
+                    const blob = new Blob(parts, {
+                        type: "video/webm"
                     });
-            
-                    document.getElementById("stop").onclick = function () {
-                        document.getElementById("time").innerText = 90;
-                        mediaRecorder.stop(0);
-                        const blob = new Blob(parts, {
-                            type: "video/webm"
-                        });
-                        url = URL.createObjectURL(blob);
-                    }
-            
-                    document.getElementById("play").onclick = function () {
-                        document.getElementById("replay_video").srcObject = null;
-                        document.getElementById("replay_video").src = url;
-                        document.getElementById("replay_video").controls = true;
-                        document.getElementById("replay_video").play();
-                    }
-            
-                    document.getElementById("download").onclick = function () {
-                        document.getElementById("time").innerText = 90;
-                        const video = document.createElement("a");
-                        document.body.appendChild(a);
-                        video.href = url;
-                        video.download = "interview_video.mp4";
-                        video.click();
+                    url = URL.createObjectURL(blob);
                     }
                 }
-            </script>
+            }
+        });
+            
+        document.getElementById("stop").onclick = function () {
+            document.getElementById("time").innerText = 90;
+            mediaRecorder.stop(0);
+            const blob = new Blob(parts, {
+                type: "video/webm"
+            });
+            url = URL.createObjectURL(blob);
+        }
+            
+        document.getElementById("play").onclick = function () {
+            document.getElementById("replay_video").srcObject = null;
+            document.getElementById("replay_video").src = url;
+            document.getElementById("replay_video").controls = true;
+            document.getElementById("replay_video").play();
+        }
+            
+        document.getElementById("download").onclick = function () {
+            document.getElementById("time").innerText = 90;
+            const video = document.createElement("a");
+            document.body.appendChild(a);
+            video.href = url;
+            video.download = "interview_video.mp4";
+            video.click();
+        }
+    }
+</script>
+
 {% endblock %}

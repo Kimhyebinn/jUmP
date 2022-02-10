@@ -17,7 +17,7 @@ def index(request):
     question_list = Question.objects.order_by('-create_date')
 
     # 페이징 처리
-    paginator = Paginator(question_list, 7)
+    paginator = Paginator(question_list, 10)
     page_obj = paginator.get_page(page)
 
     context = {'question_list':page_obj}

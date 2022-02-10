@@ -1,74 +1,66 @@
-{% load static %}
-<html>
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'multi.css' %}">
-        <title> Multicampus Group Project </title>
-    <script>
-        function send(){
+{% extends "mainpage.html" %}
+
+{% block content %}
+
+<section id="header">
+    <h1><a href="{% url 'index' %}">jUmP</a></h1>
+    <nav id="nav">
+        <ul>
+            <li id="btn_home"><a href="{% url 'index' %}">Home</a></li>
+            <li id="btn_interview"><a href="{% url 'interview' %}">Interview</a></li>
+            <li id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
+            <li class="current" id="btn_mypage"><a href="{% url 'privacy' %}">Mypage</a></li>
+            {% if user.is_authenticated %}
+            <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
+            {% else %}
+            <li id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+<script>
+    function send(){
         alert("제출되었습니다.");
         document.getElementById("contents").submit();
-        }
-    </script>
-    </head>
-    <body>
-        <div class="main_title" align="center">
-            <form>
-                <button type="button" class="title_button" onclick="location.href='{% url 'index' %}'"> jUmP </button>
+    }
+</script>
+<div class="mypage">
+    <div class="mypage_buttonline">
+        <form>
+            <button type="button" class="mypage_button" onclick="location.href='{% url 'audiotest:privacy' %}'"> </button>
+            <button type="button" class="mypage_button" onclick="location.href='{% url 'audiotest:privacy' %}'"> 개인정보 확인 </button>
+        </form>
+    </div>
+    <div class="mypage_box">
+        <h1>개인정보 변경</h1>
+        ID: ID
+        <br> 이름: <input type="text">
+        <button type = "button" class = "modify_button">수정</button>
+        <br> 휴대폰 번호: <input type="text">
+        <button type = "button" class = "modify_button">수정</button>
+        <h1>비밀번호 변경</h1>
+        <div class="container">
+            <form method="POST" action="{% url 'audiotest:re_password' %}">
+                {% csrf_token %}
+                현재 비밀번호 :
+                <input name="origin_password" type="password">
+                <br><br>
+                변경할 비밀번호 :
+                <input name="new_password" type="password">
+                <br><br>
+                비밀번호 확인 :
+                <input name="confirm_password" type="password">
+                <br><br>
+                <input class="btn btn-primary" onclick="send()" type="submit" value="변경">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </form>
         </div>
-        <div class="main_button_line" align="center">
-            <form>
-               <button type="button" class="main_buttons" onclick="location.href='{% url 'index' %}'"> 소개 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'interview' %}'"> 면접준비 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'docu:index' %}'"> 면접자료 </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="main_buttons" onclick="location.href='{% url 'privacy' %}'"> 마이페이지 </button>
-            </form>
-        </div>
-        <div class="mypage">
-            <div class="mypage_buttonline">
-                <form>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> </button>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'privacy' %}'"> 개인정보 확인 </button>
-                    <button type="button" class="mypage_button" onclick="location.href='{% url 'history' %}'"> 면접 히스토리 </button>
-                </form>
-            </div>
-            <div class="mypage_box">
-
-                <h1>개인정보 변경</h1>
-                ID: ID
-                <br> 이름: <input type="text">
-                <button type = "button" class = "modify_button">수정</button>
-                <br> 휴대폰 번호: <input type="text">
-                <button type = "button" class = "modify_button">수정</button>
-
-                <h1>비밀번호 변경</h1>
-<div class="container">
-  <form method="POST" action="{% url 're_password' %}">
-    {% csrf_token %}
-    현재 비밀번호 :
-    <input name="origin_password" type="password">
-    <br><br>
-    변경할 비밀번호 :
-    <input name="new_password" type="password">
-    <br><br>
-    비밀번호 확인 :
-    <input name="confirm_password" type="password">
-    <br><br>
-      <input class="btn btn-primary" onclick="send()" type="submit" value="변경">
-      {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-  </form>
+    </div>
 </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-        </script>
-    </body>
-</html>
+
+{% endblock %}
