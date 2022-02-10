@@ -68,9 +68,6 @@ def interview_question_setting(request):
 def interview_main(request):
     return render(request, 'interview_main.html')
 
-def mypage(request):
-    return render(request, 'mypage.html')
-
 def mypage_privacy(request):
     cur_user = request.user
     if cur_user.is_authenticated:

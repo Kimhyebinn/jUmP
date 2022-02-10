@@ -82,7 +82,6 @@
         {{ question.answer_set.count}}개의 답변이 있습니다.
     </h5>
     {% for answer in question.answer_set.all %}
-    <a name="answer_{{ answer.id }}"></a>
     <div class="row my-3">
         <div class="col-1">  <!-- 추천영역 -->
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{answer.voter.count}}</div>
