@@ -75,7 +75,7 @@ def mypage_privacy(request):
 
         return render(request, 'mypage_privacy.html', {'user': user})
     else:
-     return redirect('index1')
+     return render(request, 'index1.html')
 
 def base(request):
 

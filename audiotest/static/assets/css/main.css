@@ -2181,7 +2181,7 @@ input, select, textarea {
 		text-align: center;
 		position: relative;
 		padding: 13em 0;
-		margin:0px;
+		margin-top: 1em;
 	}
 
 		#banner header {
