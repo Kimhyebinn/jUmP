@@ -9,6 +9,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 """
 난수 추출 문제 나오는 함수
@@ -56,9 +57,6 @@ def change_password(request):
 def index(request):
     return render(request, 'index.html')
 
-def index1(request):
-    return render(request, 'index1.html')
-
 def interview(request):
     return render(request, 'interview.html')
 
@@ -68,17 +66,9 @@ def interview_question_setting(request):
 def interview_main(request):
     return render(request, 'interview_main.html')
 
+@login_required(login_url='common:login')
 def mypage_privacy(request):
     cur_user = request.user
     if cur_user.is_authenticated:
         user = User.objects.get(username=request.user)
-
         return render(request, 'mypage_privacy.html', {'user': user})
-    else:
-     return render(request, 'index1.html')
-
-def base(request):
-
-    return render(request, 'base.html')
-
-
