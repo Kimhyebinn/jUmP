@@ -40,7 +40,7 @@ def change_password(request):
         user.save()
         auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         messages.error(request, '비밀번호가 변경되었습니다.')
-        return redirect('privacy')
+        return redirect('audiotest:privacy')
       else:
         messages.error(request, '변경할 비밀번호와 확인이 일치하지 않습니다.')
     else:
