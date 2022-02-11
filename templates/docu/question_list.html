@@ -102,7 +102,8 @@
         {% endif %}
     </ul>
     <!--페이징 처리 끝-->
-    <a href = "{% url 'docu:question_create' %}" class = "btn btn-primary">질문 등록하기</a>
+    <a href = "{% url 'docu:question_create' %}" class = "btn btn-primary">질문 등록</a>
+    <a href = "{% url 'audiotest:index' %}" style = "float:right;" class = "btn btn-primary">Home</a>
 </div>
 <form id="searchForm" method="get" action="{% url 'docu:index' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">

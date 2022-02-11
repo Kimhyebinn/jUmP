@@ -28,11 +28,8 @@ def index(request):
             Q(content__icontains=kw) |  # 내용 검색
             Q(author__username__icontains=kw) |  # 질문 글쓴이 검색
             Q(answer__author__username__icontains=kw) | # 답변 글쓴이 검색
-<<<<<<< HEAD
-            Q(answer__content__icontains=kw) # 답변 내용 검색
-=======
+            Q(answer__content__icontains=kw)| # 답변 내용 검색
             Q(answer__content__incontains=kw) # 답변 내용 검색
->>>>>>> 84dc0e49ad97ba6001e015c8b5563198544667c6
         ).distinct()
 
     # 페이징 처리
