@@ -6,7 +6,7 @@
     <nav id="nav">
         <ul>
             <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
-           <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
+            <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
             <li class="current" id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
             <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
             {% if user.is_authenticated %}
@@ -16,28 +16,21 @@
             {% endif %}
         </ul>
     </nav>
-<script>
-        function send(){
-            alert("send");
-            document.getElementById("contents").submit();
-        }
-</script>
 </section>
 <section id="main">
     <div class="container">
         <article class="box post">
-<div class="container my-3">
-    <form method="post" class="post-form">
-        {% csrf_token %}
-        {% include "form_errors.html" %}
-        <div class="form-group">
-            <label for="content">답변 내용</label>
-            <textarea class="form-control" name="content" id="content"
-                      rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
-    </form>
-</div>
+            <div class="container my-3">
+                <form method="post" class="post-form">
+                    {% csrf_token %}
+                    {% include "form_errors.html" %}
+                    <div class="form-group">
+                        <label for="content">답변 내용</label>
+                        <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">저장하기</button>
+                </form>
+            </div>
         </article>
     </div>
 </section>

@@ -1,6 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'mainpage.html' %}
 {% block content %}
-<div class="container my-3">
+<section id="header">
+    <h1><a href="{% url 'index' %}">jUmP</a></h1>
+    <nav id="nav">
+        <ul>
+            <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
+            <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
+            <li id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
+            {% if user.is_authenticated %}
+            <li class="current" id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
+            {% else %}
+            <li class="current" id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</section>
+<section id="main">
+    <div class="container">
+        <article class="box post">
+            <div class="container my-3">
     <div class = "row">
         <div class = "col-4">
             <h4>로그인</h4>
@@ -28,5 +47,9 @@
         <button type="submit" class = "btn btn-primary">로그인</button>
     </form>
 </div>
+        </article>
+    </div>
+</section>
+
 {% endblock %}
 

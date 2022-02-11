@@ -18,128 +18,117 @@
             {% endif %}
         </ul>
     </nav>
-<script>
-        function send(){
-            alert("send");
-            document.getElementById("contents").submit();
-        }
-</script>
 </section>
 <section id="main">
     <div class="container">
         <article class="box post">
             <div class="container my-3">
-    <div class="row justify-content-between my-1">
-        <div class="col-2">
-            <select class="form-control so">
-                <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
-                <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
-                <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
-            </select>
-        </div>
-        <div class="col-4 input-group">
-            <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" type="button" id="btn_search">찾기</button>
+                <div class="row justify-content-between my-1">
+                    <div class="col-2">
+                        <select class="form-control so">
+                            <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
+                            <option value="recommend" {% if so == 'recommend' %}selected{% endif %}>추천순</option>
+                            <option value="popular" {% if so == 'popular' %}selected{% endif %}>인기순</option>
+                        </select>
+                    </div>
+                    <div class="col-4 input-group">
+                        <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" id="btn_search">찾기</button>
+                        </div>
+                    </div>
                 </div>
-        </div>
-    </div>
-    <div class="row justify-content-between my-1" style="height:58px">
-        <div class="col-4"></div>
-        <div class="col-2" style="width:150px; padding:14px;">
-            <a href = "{% url 'docu:question_create' %}" class = "btn btn-secondary" style="width:125px">질문 등록</a>
-        </div>
-    </div>
-
-    <table class="table">
-        <thead>
-        <tr class="text-center thead-light">
-            <th>번호</th>
-            <th>추천</th>
-            <th style = "width:50%">제목</th>
-            <th>글쓴이</th>
-            <th>작성일시</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% if question_list %}
-        {% for question in question_list %}
-        <tr class = "text-center">
-            <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
-            <td>
-                {% if question.voter.all.count > 0 %}
-                <span class="badge bg-warning px-2 py-1">{{ question.voter.all.count }}</span>
-                {% endif %}
-            </td>
-            <td class = "text-left">
-                <a href="{% url 'docu:detail' question.id %}">
-                    {{ question.subject }}
-                </a>
-                {% if question.answer_set.count > 0 %}
-                <span class="text-danger small ml-2">
-                    {{ question.answer_set.count }}
-                </span>
-                {% endif %}
-            </td>
-            <td>{{ question.author.username }}</td>
-            <td>{{ question.create_date }}</td>
-        </tr>
-        {% endfor %}
-        {% else %}
-        <tr>
-            <td colspan="3">해당 내용이 없습니다.</td>
-        </tr>
-        {% endif %}
-        </tbody>
-    </table>
-    <!--페이징 처리 시작-->
-    <ul class = "pagination justify-content-center">
-    <!--이전 페이지-->
-        {% if question_list.has_previous %}
-        <li class = "page-item">
-            <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
-        </li>
-        {% else %}
-        <li class = "page-item disabled">
-            <a class = "page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-        </li>
-        {% endif %}
-    <!--페이지 리스트-->
-        {% for page_number in question_list.paginator.page_range %}
-        {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
-            {% if page_number == question_list.number %}
-            <li class = "page-item" aria-current="page">
-                <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-
-            </li>
-            {% else %}
-            <li class = "page-item">
-                <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-
-            </li>
-            {% endif %}
-        {% endif %}
-        {% endfor %}
-    <!--다음 페이지-->
-        {% if question_list.has_next %}
-        <li class = "page-item">
-            <a class = "page-link" href = "?page={{ question_list.next_page_number }}">다음</a>
-
-        </li>
-        {% else %}
-        <li class = "page-item disabled">
-            <a class = "page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-        </li>
-        {% endif %}
-    </ul>
-    <!--페이징 처리 끝-->
-
-</div>
-<form id="searchForm" method="get" action="{% url 'docu:index' %}">
-    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
-    <input type="hidden" id="page" name="page" value="{{ page }}">
-    <input type="hidden" id="so" name="so" value="{{ so }}">
-</form>
+                <div class="row justify-content-between my-1" style="height:58px">
+                    <div class="col-4"></div>
+                    <div class="col-2" style="width:150px; padding:14px;">
+                        <a href = "{% url 'docu:question_create' %}" class = "btn btn-secondary" style="width:125px">질문 등록</a>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr class="text-center thead-light">
+                        <th>번호</th>
+                        <th>추천</th>
+                        <th style = "width:50%">제목</th>
+                        <th>글쓴이</th>
+                        <th>작성일시</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if question_list %}
+                    {% for question in question_list %}
+                    <tr class = "text-center">
+                        <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
+                        <td>
+                            {% if question.voter.all.count > 0 %}
+                            <span class="badge bg-warning px-2 py-1">{{ question.voter.all.count }}</span>
+                            {% endif %}
+                        </td>
+                        <td class = "text-left">
+                            <a href="{% url 'docu:detail' question.id %}">
+                                {{ question.subject }}
+                            </a>
+                            {% if question.answer_set.count > 0 %}
+                            <span class="text-danger small ml-2">
+                                {{ question.answer_set.count }}
+                            </span>
+                            {% endif %}
+                        </td>
+                        <td>{{ question.author.username }}</td>
+                        <td>{{ question.create_date }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="3">해당 내용이 없습니다.</td>
+                    </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+                <!--페이징 처리 시작-->
+                <ul class = "pagination justify-content-center">
+                    <!--이전 페이지-->
+                    {% if question_list.has_previous %}
+                    <li class = "page-item">
+                        <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+                    </li>
+                    {% else %}
+                    <li class = "page-item disabled">
+                        <a class = "page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                    </li>
+                    {% endif %}
+                    <!--페이지 리스트-->
+                    {% for page_number in question_list.paginator.page_range %}
+                    {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+                    {% if page_number == question_list.number %}
+                    <li class = "page-item" aria-current="page">
+                        <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                    {% else %}
+                    <li class = "page-item">
+                        <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <!--다음 페이지-->
+                    {% if question_list.has_next %}
+                    <li class = "page-item">
+                        <a class = "page-link" href = "?page={{ question_list.next_page_number }}">다음</a>
+                    </li>
+                    {% else %}
+                    <li class = "page-item disabled">
+                        <a class = "page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <!--페이징 처리 끝-->
+            </div>
+            <form id="searchForm" method="get" action="{% url 'docu:index' %}">
+                <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+                <input type="hidden" id="page" name="page" value="{{ page }}">
+                <input type="hidden" id="so" name="so" value="{{ so }}">
+            </form>
         </article>
     </div>
 </section>
