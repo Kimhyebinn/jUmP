@@ -47,19 +47,28 @@
                         </div>
                         {% if question_list %}
                         <ul>
+                            <br>
+                            인성 질문
+                            <br>
+                            <br>
                             {% for question in question_list %}
                             {{ forloop.counter }}.
                             {{ question.question_text }}
-                            <br></br>
+                            <br>
+                            <br>
                             {% endfor %}
                         </ul>
                         {% endif %}
                         {% if question_list1 %}
                         <ul>
+                            기술 질문
+                            <br>
+                            <br>
                             {% for question in question_list1 %}
                             {{ forloop.counter }}.
                             {{ question.question_text }}
-                            <br></br>
+                            <br>
+                            <br>
                             {% endfor %}
                             </ul>
                     {% endif %}
