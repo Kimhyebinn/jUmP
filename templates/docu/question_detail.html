@@ -14,13 +14,13 @@
 
     <h2 class = "border-bottom py-2">{{ question.subject }}</h2>
     <div class="row my-3">
-        <div class="col-1"> <!-- 추천영역 -->
+        <div class="col-1"> <!-- 추천 영역 -->
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{question.voter.count}}</div>
             <a href="#" data-uri="{% url 'docu:vote_question' question.id  %}"
                class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
         </div>
-        <div class="col-11"> <!-- 질문영역 -->
-            <!-- 기존내용 -->
+        <div class="col-11"> <!-- 질문 영역 -->
+            <!-- 기존 내용 -->
             <div class = "card my-3">
                 <div class = "card-body">
                     <div class = "card-text" style = "white-space: pre-line;">
@@ -83,13 +83,13 @@
     </h5>
     {% for answer in question.answer_set.all %}
     <div class="row my-3">
-        <div class="col-1">  <!-- 추천영역 -->
+        <div class="col-1">  <!-- 추천 영역 -->
             <div class="bg-light text-center p-3 border font-weight-bolder mb-1">{{answer.voter.count}}</div>
             <a href="#" data-uri="{% url 'docu:vote_answer' answer.id  %}"
                 class="recommend btn btn-sm btn-secondary btn-block my-1">추천</a>
         </div>
-        <div class="col-11">  <!-- 답변영역 -->
-            <!-- 기존내용 -->
+        <div class="col-11">  <!-- 답변 영역 -->
+            <!-- 기존 내용 -->
             <div class = "card my-3">
                 <div class = "card-body">
                     <div class = "card-text" style = "white-space: pre-line;">
@@ -137,7 +137,7 @@
                             {% endif %}
                             <div>
                                 <a href="{% url 'docu:comment_create_answer' answer.id  %}"
-                                   class="small"><small>댓글 추가 ..</small></a>
+                                   class="small"><small>댓글 추가</small></a>
                             </div>
                         <!-- 답변 댓글 끝 -->
 
