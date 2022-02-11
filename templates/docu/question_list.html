@@ -1,9 +1,35 @@
-{% extends 'base.html' %}
+{% extends 'mainpage.html' %}
 {% load docu_filter %}
-{% block content %}
 
-<div class="container my-3">
-    <div class="row justify-content-between my-3">
+{% block content %}
+<!--header-->
+<section id="header">
+    <h1><a href="{% url 'index' %}">jUmP</a></h1>
+    <nav id="nav">
+        <ul>
+            <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
+            <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
+            <li class="current" id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
+            {% if user.is_authenticated %}
+            <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
+            {% else %}
+            <li id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+<script>
+        function send(){
+            alert("send");
+            document.getElementById("contents").submit();
+        }
+</script>
+</section>
+<section id="main">
+    <div class="container">
+        <article class="box post">
+            <div class="container my-3">
+    <div class="row justify-content-between my-1">
         <div class="col-2">
             <select class="form-control so">
                 <option value="recent" {% if so == 'recent' %}selected{% endif %}>최신순</option>
@@ -13,9 +39,15 @@
         </div>
         <div class="col-4 input-group">
             <input type="text" class="form-control kw" value="{{ kw|default_if_none:'' }}">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="btn_search">찾기</button>
-            </div>
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button" id="btn_search">찾기</button>
+                </div>
+        </div>
+    </div>
+    <div class="row justify-content-between my-1" style="height:58px">
+        <div class="col-4"></div>
+        <div class="col-2" style="width:150px; padding:14px;">
+            <a href = "{% url 'docu:question_create' %}" class = "btn btn-secondary" style="width:125px">질문 등록</a>
         </div>
     </div>
 
@@ -36,7 +68,7 @@
             <td>{{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}</td>
             <td>
                 {% if question.voter.all.count > 0 %}
-                <span class="badge badge-warning px-2 py-1">{{ question.voter.all.count }}</span>
+                <span class="badge bg-warning px-2 py-1">{{ question.voter.all.count }}</span>
                 {% endif %}
             </td>
             <td class = "text-left">
@@ -66,7 +98,6 @@
         {% if question_list.has_previous %}
         <li class = "page-item">
             <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
-<!--            <a class="page-link" data-page="{{ question_list.previous_page_number }}" href="#">이전</a>-->
         </li>
         {% else %}
         <li class = "page-item disabled">
@@ -77,14 +108,14 @@
         {% for page_number in question_list.paginator.page_range %}
         {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
             {% if page_number == question_list.number %}
-            <li class = "page-item active" aria-current="page">
+            <li class = "page-item" aria-current="page">
                 <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-<!--                <a class = "page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>-->
+
             </li>
             {% else %}
             <li class = "page-item">
                 <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-<!--                <a class = "page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>-->
+
             </li>
             {% endif %}
         {% endif %}
@@ -93,7 +124,7 @@
         {% if question_list.has_next %}
         <li class = "page-item">
             <a class = "page-link" href = "?page={{ question_list.next_page_number }}">다음</a>
-<!--            <a class = "page-link" data-page="{{ question_list.next_page_number }}" href = "#">다음</a>-->
+
         </li>
         {% else %}
         <li class = "page-item disabled">
@@ -102,14 +133,17 @@
         {% endif %}
     </ul>
     <!--페이징 처리 끝-->
-    <a href = "{% url 'docu:question_create' %}" class = "btn btn-primary">질문 등록</a>
-    <a href = "{% url 'audiotest:index' %}" style = "float:right;" class = "btn btn-primary">Home</a>
+
 </div>
 <form id="searchForm" method="get" action="{% url 'docu:index' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
     <input type="hidden" id="page" name="page" value="{{ page }}">
     <input type="hidden" id="so" name="so" value="{{ so }}">
 </form>
+        </article>
+    </div>
+</section>
+
 {% endblock %}
 {% block script %}
 <script type='text/javascript'>

@@ -2170,7 +2170,7 @@ input, select, textarea {
 /* Banner */
 
 	#banner {
-		background: #CCE8F4 url("../../images/mainpage_image.png");
+		background: #CCE8F4 url("../../images/header.png");
 		background-color: white;
 		background-position: center center;
 		background-size: auto 100%;

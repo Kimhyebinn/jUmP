@@ -1,6 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'mainpage.html' %}
 
 {% block content %}
+<section id="header">
+    <h1><a href="{% url 'index' %}">jUmP</a></h1>
+    <nav id="nav">
+        <ul>
+            <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
+           <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
+            <li class="current" id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
+            {% if user.is_authenticated %}
+            <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
+            {% else %}
+            <li id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+<script>
+        function send(){
+            alert("send");
+            document.getElementById("contents").submit();
+        }
+</script>
+</section>
+<section id="main">
+    <div class="container">
+        <article class="box post">
 <div class="container my-3">
     <form method="post" class="post-form">
         {% csrf_token %}
@@ -13,4 +38,8 @@
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
 </div>
+        </article>
+    </div>
+</section>
+
 {% endblock %}
