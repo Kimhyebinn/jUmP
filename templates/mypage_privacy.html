@@ -19,48 +19,38 @@
     </nav>
 
 </section>
-<div class="mypage">
-    <div class="mypage_buttonline">
-        <form>
-            <button type="button" class="mypage_button" onclick="location.href='{% url 'audiotest:privacy' %}'"> </button>
-            <button type="button" class="mypage_button" onclick="location.href='{% url 'audiotest:privacy' %}'"> 개인정보 확인 </button>
-        </form>
+<section id="main">
+    <div class="container">
+        <article class="box post">
+            <div class="container">
+                <form method="POST" action="{% url 'audiotest:re_password' %}">
+                    {% csrf_token %}
+                    현재 비밀번호 :
+                    <input name="origin_password" type="password">
+                    <br><br>
+                    변경할 비밀번호 :
+                    <input name="new_password" type="password">
+                    <br><br>
+                    비밀번호 확인 :
+                    <input name="confirm_password" type="password">
+                    <br><br>
+                    <input class="btn btn-primary" onclick="send()" type="submit" value="변경">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </form>
+            </div>
+        </article>
     </div>
-    <div class="mypage_box">
-        <h1>개인정보 변경</h1>
-        ID: ID
-        <br> 이름: <input type="text">
-        <button type = "button" class = "modify_button">수정</button>
-        <br> 휴대폰 번호: <input type="text">
-        <button type = "button" class = "modify_button">수정</button>
-        <h1>비밀번호 변경</h1>
-        <div class="container">
-            <form method="POST" action="{% url 'audiotest:re_password' %}">
-                {% csrf_token %}
-                현재 비밀번호 :
-                <input name="origin_password" type="password">
-                <br><br>
-                변경할 비밀번호 :
-                <input name="new_password" type="password">
-                <br><br>
-                비밀번호 확인 :
-                <input name="confirm_password" type="password">
-                <br><br>
-                <input class="btn btn-primary" onclick="send()" type="submit" value="변경">
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </form>
-        </div>
-    </div>
-</div>
+</section>
+
 <script>
     function send(){
-        alert("제출되었습니다.");
+        alert("비밀번호가 변경되었습니다.");
         document.getElementById("contents").submit();
     }
 </script>
