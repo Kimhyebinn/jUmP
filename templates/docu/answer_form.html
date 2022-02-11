@@ -8,8 +8,8 @@
             <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
             <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
             <li class="current" id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
-            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
             {% if user.is_authenticated %}
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
             <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
             {% else %}
             <li id="btn_login"><a href="{% url 'audiotest:login' %}">Login</a></li>
