@@ -67,9 +67,7 @@ input::-moz-focus-inner {
 
 input, select, textarea {
 	-moz-appearance: none;
-	-webkit-appearance: none;
 	-ms-appearance: none;
-	appearance: none;
 }
 
 /* Basic */
@@ -176,7 +174,6 @@ input, select, textarea {
 	}
 
 /* Container */
-
 	.container {
 		margin: 0 auto;
 		max-width: 100%;
@@ -1452,7 +1449,7 @@ input, select, textarea {
 	form input[type=password],
 	form select,
 	form textarea {
-		-webkit-appearance: none;
+
 		display: block;
 		border: 0;
 		padding: 0.75em 1em;
@@ -1608,7 +1605,7 @@ input, select, textarea {
 	input[type="reset"],
 	button,
 	.button {
-		-webkit-appearance: none;
+
 		display: inline-block;
 		text-decoration: none;
 		cursor: pointer;

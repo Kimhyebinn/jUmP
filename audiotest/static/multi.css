@@ -1,20 +1,19 @@
 #banner_interview {
+        background: url("mainpage_image.png");
 		text-align: center;
 		position: relative;
 		padding: 8em 0;
-		margin: 4em 0 0 0;
+		margin: 1em 0 0 0;
 	}
 #banner_interview::before {
-        background: url("mainpage_image.png");
 	    background-position: center center;
 	    background-size: auto 100%;
         background-repeat: no-repeat;
         position: absolute;
         opacity: 0.5;
+        z-index: 1;
         top: 0;
         left: 0;
-        padding: 8em 0;
-        margin: 4em 0 0 0;
 	}
 	#banner_interview header {
 			background-color: rgba(34, 30, 31, 0.98);
@@ -37,3 +36,14 @@
 				margin: 0;
 				font-size: 1.5em;
 			}
+
+.interview-buttons {
+	color: black;
+	font: 20 bold inherit;
+	font-weight: 7000000;
+}
+
+.interview-box {
+	position: relative;
+	width: 33%;
+}

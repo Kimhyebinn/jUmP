@@ -6,10 +6,10 @@
     <h1><a href="{% url 'index' %}">jUmP</a></h1>
     <nav id="nav">
         <ul>
-            <li id="btn_home"><a href="{% url 'index' %}">Home</a></li>
-            <li class="current" id="btn_interview"><a href="{% url 'interview' %}">Interview</a></li>
+            <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
+            <li class="current" id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
             <li id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
-            <li id="btn_mypage"><a href="{% url 'privacy' %}">Mypage</a></li>
+            <li id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
             {% if user.is_authenticated %}
             <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
             {% else %}
@@ -23,14 +23,16 @@
             document.getElementById("contents").submit();
         }
 </script>
-<div class="box_out">
-    <div class="box_in" align="center">
-        <div class = "form">
+</section>
+<section id="main">
+    <div class="container">
+        <article class="box post">
             <form insung_num = 'insung_num' skill_num="skill_num" level = "level" action="{% url 'audiotest:main' %}" method = "post">
                 {% csrf_token %}
-                <h2>면접 세팅 설문지</h2>
-                1. 문항의 수를 정해주세요. 단, 전체 문항 수는 인성면접, 기술면접을 합쳐서 최대 10문항까지 가능합니다.
-                <br> 인성면접
+                <h3>면접 세팅</h3>
+                <br>
+                <h4>1. 문항의 수를 정해주세요. 단, 전체 문항 수는 인성면접, 기술면접을 합쳐서 최대 10문항까지 가능합니다.</h4>
+                인성면접
                 <input type="radio" name="insung_num" value="0"> 0
                 <input type="radio" name="insung_num" value="1"> 1
                 <input type="radio" name="insung_num" value="2"> 2
@@ -54,16 +56,16 @@
                 <input type="radio" name="skill_num" value="8"> 8
                 <input type="radio" name="skill_num" value="9"> 9
                 <input type="radio" name="skill_num" value="10"> 10
-                <br>
-                2. 기술 면접의 난이도를 설정해주세요.
+                <br><br>
+                <h4>2. 기술 면접의 난이도를 설정해주세요.</h4>
                 <input type="radio" name="level" value="0"> 하
                 <input type="radio" name="level" value="1"> 중
                 <input type="radio" name="level" value="2"> 상
                 <br></br>
                 <button type="submit" onclick="send();" align="center"> 전송 </button>
             </form>
-        </div>
+        </article>
     </div>
-</div>
+</section>
 
 {% endblock %}
