@@ -5,10 +5,6 @@ class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ['subject', 'content']
-        # widgets = {
-        #     'subject': forms.TextInput(attrs={'class': 'form-control'}),
-        #     'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
-        # }
         labels = {
             'subject': '제목',
             'content': '내용',
@@ -27,5 +23,5 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['content']
         labels = {
-            'content': '댓글내용',
+            'content': '댓글 내용',
         }
