@@ -9,18 +9,10 @@
             <li id="btn_home"><a href="{% url 'audiotest:index' %}">Home</a></li>
             <li id="btn_interview"><a href="{% url 'audiotest:interview' %}">Interview</a></li>
             <li id="btn_employment_info"><a href="{% url 'docu:index' %}">Employment info.</a></li>
-            {% if user.is_authenticated %}
             <li class="current" id="btn_mypage"><a href="{% url 'audiotest:privacy' %}">Mypage</a></li>
             <li id="btn_logout"><a href="{% url 'audiotest:logout' %}">Logout</a></li>
-            {% else %}
-            <script type="text/javascript">
-                alert("로그인 상태가 아닙니다.);
-                location.href = "{% url 'audiotest:index' %}";
-            </script>
-            {% endif %}
         </ul>
     </nav>
-
 </section>
 <section id="main">
     <div class="container">
@@ -53,7 +45,7 @@
 
 <script>
     function send(){
-        alert("비밀번호가 변경되었습니다.");
+        alert("제출되었습니다.");
         document.getElementById("contents").submit();
     }
 </script>

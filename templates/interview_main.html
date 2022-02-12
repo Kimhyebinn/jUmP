@@ -39,12 +39,13 @@
                 <!-- Content -->
                     <article class="box post">
                         <div class="interview-buttons">
-                            <button id="start"> Start </button>
-                            <button id="stop"><img src="/static/img/stop-button.png" height ="10" width="10" /></button>
-                            <button id="play"><img src="/static/img/play.png" height ="10" width="10" /></button>
+                            <button id="record"> Record </button>
+                            <button id="stop"> Stop </button>
+                            <button id="play"> Play </button>
                             <button id="download"> Download </button>
-                            남은 시간: <span class="time" id="time"></span>
+                            <span class="time_table"><b> 남은 시간: <span class="time" id="time"></span></b></span>
                         </div>
+                        <b>
                         {% if question_list %}
                         <ul>
                             <br>
@@ -71,7 +72,8 @@
                             <br>
                             {% endfor %}
                             </ul>
-                    {% endif %}
+                        {% endif %}
+                        <b> 
                     </article>
 
             </div>
@@ -79,56 +81,79 @@
 </section>
 <script type="text/javascript">
     window.onload = function () {
-        document.getElementById("time").innerText = 90;
-        const parts = [];
-        let mediaRecorder;
+
+        // 타이머 관련 설정
+        document.getElementById("time").innerText = "90초";
+        let timee = 90;
+        // 타이머 함수
+        let timer_output = function() {
+            timee = timee - 1;
+            document.getElementById("time").innerText = String(timee) + "초";
+            if (timee <= 0) {
+                clearInterval(timer);
+            }
+        }
+        
+        let timer;
+
+        // 녹화 관련 변수 생성
+        const parts = []; // 프레임 저장용 array
+        let mediaRecorder; 
         let url;
+
+        // 웹캠 화면 출력 및 녹화 시작
         navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(stream => {
         document.getElementById("record_video").srcObject = stream;
-        document.getElementById("start").onclick = function () {
+        document.getElementById("record").onclick = function () {
             mediaRecorder = new MediaRecorder(stream);
-            let timee = new Date();
-            let end_time = timee.setSeconds(timee.getSeconds() + 90);
+            timer = setInterval(timer_output, 1000);
             mediaRecorder.start(0);
             mediaRecorder.ondataavailable = function (e) {
                 parts.push(e.data);
-                let elapsed_time = new Date();
-                elapsed_time = elapsed_time.setSeconds(elapsed_time.getSeconds());
-                document.getElementById("time").innerText = (end_time - elapsed_time) / 1000;
-                if ((end_time - elapsed_time) / 1000 < 0) {
+                if (timee <= 0) {
                     mediaRecorder.stop(0);
                     const blob = new Blob(parts, {
                         type: "video/webm"
                     });
                     url = URL.createObjectURL(blob);
-                    }
+                    setTimeout(function() {
+                        document.getElementById("time").innerText = "90초";
+                    }, 1000);
+                }
                 }
             }
         });
-            
+
+        // 녹화 중지
         document.getElementById("stop").onclick = function () {
-            document.getElementById("time").innerText = 90;
+            clearInterval(timer);
+            timee = 10;
+            document.getElementById("time").innerText = "90초";
             mediaRecorder.stop(0);
             const blob = new Blob(parts, {
                 type: "video/webm"
             });
             url = URL.createObjectURL(blob);
         }
-            
+
+
+        // 녹화영상 재생
         document.getElementById("play").onclick = function () {
             document.getElementById("replay_video").srcObject = null;
             document.getElementById("replay_video").src = url;
             document.getElementById("replay_video").controls = true;
             document.getElementById("replay_video").play();
         }
-            
+
+
+        // 녹화영상 다운로드
         document.getElementById("download").onclick = function () {
             document.getElementById("time").innerText = 90;
-            const video = document.createElement("a");
-            document.body.appendChild(a);
-            video.href = url;
-            video.download = "interview_video.mp4";
-            video.click();
+            const videooo = document.createElement("a");
+            document.body.appendChild(videooo);
+            videooo.href = url;
+            videooo.download = "interview_video.webm";
+            videooo.click();
         }
     }
 </script>

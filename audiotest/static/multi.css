@@ -37,13 +37,7 @@
 				font-size: 1.5em;
 			}
 
-.interview-buttons {
-	color: black;
-	font: 20 bold inherit;
-	font-weight: 7000000;
-}
-
-.interview-box {
-	position: relative;
-	width: 33%;
+.time_table {
+	font-weight: 15000;
+	font: 1em bold;
 }
