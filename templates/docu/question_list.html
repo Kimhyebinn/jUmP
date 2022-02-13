@@ -46,7 +46,7 @@
                 </div>
                 <table class="table">
                     <thead>
-                    <tr class="text-center thead-light">
+                    <tr class="text-center bg-light">
                         <th>번호</th>
                         <th>추천</th>
                         <th style = "width:50%">제목</th>
@@ -101,7 +101,7 @@
                     {% for page_number in question_list.paginator.page_range %}
                     {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
                     {% if page_number == question_list.number %}
-                    <li class = "page-item" aria-current="page">
+                    <li class = "page-item active" aria-current="page">
                         <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
                     </li>
                     {% else %}
