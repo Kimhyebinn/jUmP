@@ -19,7 +19,7 @@
     </nav>
 <script>
         function send(){
-            alert("제출되었습니다.");
+            alert("send");
             document.getElementById("contents").submit();
         }
 </script>
@@ -31,8 +31,9 @@
                 {% csrf_token %}
                 <h3>면접 세팅</h3>
                 <br>
+                <b>
                 <h4>1. 문항의 수를 정해주세요. 단, 전체 문항 수는 인성면접, 기술면접 각 최대 10문항까지 가능합니다.</h4>
-                인성면접
+                인성면접 질문 수
                 <input type="radio" name="insung_num" value="0"> 0
                 <input type="radio" name="insung_num" value="1"> 1
                 <input type="radio" name="insung_num" value="2"> 2
@@ -44,7 +45,7 @@
                 <input type="radio" name="insung_num" value="8"> 8
                 <input type="radio" name="insung_num" value="9"> 9
                 <input type="radio" name="insung_num" value="10"> 10
-                <br> 기술면접
+                <br> 기술면접 질문 수
                 <input type="radio" name="skill_num" value="0"> 0
                 <input type="radio" name="skill_num" value="1"> 1
                 <input type="radio" name="skill_num" value="2"> 2
@@ -61,7 +62,8 @@
                 <input type="radio" name="level" value="0"> 하
                 <input type="radio" name="level" value="1"> 중
                 <input type="radio" name="level" value="2"> 상
-                <br>
+                <br></br>
+                </b>
                 <button type="submit" onclick="send();" align="center"> 전송 </button>
             </form>
         </article>
