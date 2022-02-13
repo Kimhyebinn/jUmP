@@ -46,12 +46,12 @@
                 </div>
                 <table class="table">
                     <thead>
-                    <tr class="text-center thead-light">
-                        <th>번호</th>
-                        <th>추천</th>
-                        <th style = "width:50%">제목</th>
-                        <th>글쓴이</th>
-                        <th>작성일시</th>
+                    <tr class="text-center bg-light">
+                        <th class="text-center">번호</th>
+                        <th class="text-center">추천</th>
+                        <th class="text-center" style = "width:50%">제목</th>
+                        <th class="text-center">글쓴이</th>
+                        <th class="text-center">작성일시</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -101,7 +101,7 @@
                     {% for page_number in question_list.paginator.page_range %}
                     {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
                     {% if page_number == question_list.number %}
-                    <li class = "page-item" aria-current="page">
+                    <li class = "page-item active" aria-current="page">
                         <a class = "page-link" href="?page={{ page_number }}">{{ page_number }}</a>
                     </li>
                     {% else %}
