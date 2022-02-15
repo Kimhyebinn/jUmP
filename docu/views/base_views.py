@@ -16,7 +16,6 @@ def index(request):
     # 정렬
     if so == 'recommend':
         question_list = Question.objects.annotate(num_voter=Count('voter')).order_by('-num_voter', '-create_date')
-        print(question_list)
     elif so == 'popular':
         question_list = Question.objects.annotate(num_answer=Count('answer')).order_by('-num_answer', '-create_date')
     else:  # recent
