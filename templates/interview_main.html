@@ -127,7 +127,6 @@
         // 녹화 중지
         document.getElementById("stop").onclick = function () {
             clearInterval(timer);
-            timee = 10;
             document.getElementById("time").innerText = "90초";
             mediaRecorder.stop(0);
             const blob = new Blob(parts, {
